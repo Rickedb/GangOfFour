@@ -36,6 +36,9 @@ namespace GangOfFour.Memento
 
         public Memento restoreState<Memento>(Memento obj, int previous)
         {
+            if (previous <= 0)
+                return obj;
+
             if (this.snapshots.Count == 0)
                 obj = this.restoreState<Memento>(obj);
             if (previous >= this.snapshots.Count)
