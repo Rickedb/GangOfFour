@@ -50,9 +50,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CoR\ChainingTest.cs" />
     <Compile Include="Memento\MementoTest.cs" />
     <Compile Include="Memento\Objects\MementoObj.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Prototype\Objects\OnlyPrototype.cs" />
+    <Compile Include="Prototype\Objects\RandomClass.cs" />
+    <Compile Include="Prototype\Objects\WithHeritagePrototype.cs" />
+    <Compile Include="Prototype\ProtoClonerTest.cs" />
+    <Compile Include="Singleton\Objects\MySingleton.cs" />
+    <Compile Include="Singleton\SingletonTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GangOfFour\GangOfFour.csproj">
@@ -60,6 +67,7 @@
       <Name>GangOfFour</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
