@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CoR\Chaining.cs" />
     <Compile Include="CoR\Interfaces\ICoR.cs" />
+    <Compile Include="FactoryMethod\ClassCooker.cs" />
     <Compile Include="Memento\Interfaces\IMemento.cs" />
     <Compile Include="Memento\SnapshotMemento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

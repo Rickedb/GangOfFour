@@ -51,6 +51,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CoR\ChainingTest.cs" />
+    <Compile Include="FactoryMethod\FactoryMethodsTest.cs" />
+    <Compile Include="FactoryMethod\Objects\ConcreteProduct.cs" />
+    <Compile Include="FactoryMethod\Objects\Interfaces\IProduct.cs" />
     <Compile Include="Memento\MementoTest.cs" />
     <Compile Include="Memento\Objects\MementoObj.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
