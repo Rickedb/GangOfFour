@@ -15,14 +15,13 @@ namespace GangOfFour.UnitTest.Prototype
         [TestMethod]
         public void TestCloneMethods()
         {
-            ProtoCloner cloner = new ProtoCloner();
             OnlyPrototype onlyPrototype = new OnlyPrototype();
             onlyPrototype.Name = "Prototype";
             onlyPrototype.RandomClass = new RandomClass();
             onlyPrototype.RandomClass.myInt = 5;
             onlyPrototype.RandomClass.myString = "RandomClass";
 
-            var onlyPrototypeClone = cloner.clone(onlyPrototype);
+            var onlyPrototypeClone = ProtoCloner.clone(onlyPrototype);
 
             if (onlyPrototype.Name != onlyPrototypeClone.Name ||
                 onlyPrototype.RandomClass.myInt != onlyPrototypeClone.RandomClass.myInt ||

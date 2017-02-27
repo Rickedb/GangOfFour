@@ -9,7 +9,7 @@ namespace GangOfFour.Prototype
             return (ProtoCloner)this.MemberwiseClone();
         }
 
-        public T clone<T>(T obj)
+        public static T clone<T>(T obj)
         {
             var instance = Activator.CreateInstance<T>();
             var properties = obj.GetType().GetProperties();

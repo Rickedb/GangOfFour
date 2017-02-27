@@ -19,20 +19,14 @@ namespace GangOfFour.Memento
         /// Save object state
         /// </summary>
         /// <param name="memento">An ICloneable Object</param>
-        public void saveState(Object memento)
+        public void saveState<Memento>(Memento memento)
         {
-            if (!this.canBeCloned(memento))
-                throw new NotSupportedException("Object does not implement ICloneable, therefore, we cannot save his state");
-
-            this.currentSnapshot = ((ICloneable)memento).Clone();
+            this.currentSnapshot = this.cloneObject(memento);
         }
 
-        public void pushState(Object memento)
+        public void pushState<Memento>(Memento memento)
         {
-            if (!this.canBeCloned(memento))
-                throw new NotSupportedException("Object does not implement ICloneable, therefore, we cannot save his state");
-
-            this.currentSnapshot = ((ICloneable)memento).Clone();
+            this.currentSnapshot = this.cloneObject(memento);
             this.snapshots.Add(this.currentSnapshot);
         }
 
@@ -62,9 +56,9 @@ namespace GangOfFour.Memento
             return (Memento)this.currentSnapshot;
         }
 
-        private bool canBeCloned(Object obj)
+        private Memento cloneObject<Memento>(Memento obj)
         {
-            return (obj as ICloneable != null);
+            return Prototype.ProtoCloner.clone(obj);
         }
 
         //protected bool compareWithMemento<Memento>(Memento obj)

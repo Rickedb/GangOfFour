@@ -3,7 +3,7 @@ namespace GangOfFour.Memento.Interfaces
 {
     public interface IMemento
     {
-        void saveState(Object memento);
+        void saveState<Memento>(Memento memento);
         Memento restoreState<Memento>(Memento obj);
     }
 }
