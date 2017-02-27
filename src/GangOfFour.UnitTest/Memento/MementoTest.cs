@@ -11,6 +11,7 @@ namespace GangOfFour.UnitTest.Memento
         [TestMethod]
         public void TestSaveStateMethod()
         {
+
             SnapshotMemento memento = new SnapshotMemento();
             MementoObj obj = new MementoObj();
 

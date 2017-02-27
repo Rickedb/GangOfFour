@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Reflection;
 using GangOfFour.Memento.Interfaces;
 
 namespace GangOfFour.Memento
@@ -17,13 +15,23 @@ namespace GangOfFour.Memento
             this.snapshots = new List<object>();
         }
 
+        /// <summary>
+        /// Save object state
+        /// </summary>
+        /// <param name="memento">An ICloneable Object</param>
         public void saveState(Object memento)
         {
+            if (!this.canBeCloned(memento))
+                throw new NotSupportedException("Object does not implement ICloneable, therefore, we cannot save his state");
+
             this.currentSnapshot = ((ICloneable)memento).Clone();
         }
 
         public void pushState(Object memento)
         {
+            if (!this.canBeCloned(memento))
+                throw new NotSupportedException("Object does not implement ICloneable, therefore, we cannot save his state");
+
             this.currentSnapshot = ((ICloneable)memento).Clone();
             this.snapshots.Add(this.currentSnapshot);
         }
@@ -49,6 +57,16 @@ namespace GangOfFour.Memento
             return obj;
         }
 
+        private Memento getSnapshot<Memento>()
+        {
+            return (Memento)this.currentSnapshot;
+        }
+
+        private bool canBeCloned(Object obj)
+        {
+            return (obj as ICloneable != null);
+        }
+
         //protected bool compareWithMemento<Memento>(Memento obj)
         //{
         //    return this.compareWithMemento<Memento>(obj, this.getSnapshot<Memento>());
@@ -72,9 +90,5 @@ namespace GangOfFour.Memento
         //    return true;
         //}
 
-        private Memento getSnapshot<Memento>()
-        {
-            return (Memento)this.currentSnapshot;
-        }
     }
 }
