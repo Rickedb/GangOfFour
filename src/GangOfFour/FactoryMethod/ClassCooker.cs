@@ -2,30 +2,16 @@
 
 namespace GangOfFour.FactoryMethod
 {
-    public class ClassCooker<I>
+    public abstract class ClassCooker<C> where C : class
     {
-        public ClassCooker()
+        public virtual C CookConcreteClass<T>()
         {
-            if (!typeof(I).IsInterface)
-                throw new NotSupportedException(typeof(I).Name + " must be an interface");
+            return (C)(object)Activator.CreateInstance<T>();
         }
 
-        public virtual T CookConcreteClass<T>()
+        public virtual C CookConcreteClass<T>(object[] parameters)
         {
-            this.isAssignableFromClass<T>();
-            return Activator.CreateInstance<T>();
-        }
-
-        public virtual T CookConcreteClass<T>(object[] parameters)
-        {
-            this.isAssignableFromClass<T>();
-            return (T)Activator.CreateInstance(typeof(T), parameters);
-        }
-
-        private void isAssignableFromClass<T>()
-        {
-            if (!typeof(I).IsAssignableFrom(typeof(T)))
-                throw new NotSupportedException(typeof(T).Name + " must be an implement " + typeof(I).Name);
+            return (C)Activator.CreateInstance(typeof(T), parameters);
         }
     }
 }
